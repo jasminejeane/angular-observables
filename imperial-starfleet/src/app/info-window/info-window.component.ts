@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { ActivatedRoute }   from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 
 @Component({
@@ -26,11 +28,13 @@ export class InfoWindowComponent implements OnInit {
 	}
 
   ngOnInit() {
-  	this.searchSubject.subscribe( param => {
+  	this.searchSubject
+    .debounceTime(1000) //add this
+    .distinctUntilChanged() // add this
+    .subscribe( param => {
     this.http.get('http://localhost:3000/api/turret/' + param.id)
     .subscribe(response => this.dataBanks = response.json());  	
   });
   }
-
 
 }
