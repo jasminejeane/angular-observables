@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 
 
 @Injectable()
-export class SearchService{
+export class InfoWindowService{
 
 constructor(private http: Http){}
 

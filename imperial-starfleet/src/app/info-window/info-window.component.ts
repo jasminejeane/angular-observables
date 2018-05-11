@@ -5,6 +5,7 @@ import { ActivatedRoute }   from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { InfoWindowService } from './info-window.service';
 
 
 @Component({
